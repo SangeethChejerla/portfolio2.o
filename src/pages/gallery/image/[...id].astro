@@ -1,0 +1,23 @@
+---
+import { BlogPost } from '@/components/BlogPost';
+import { images } from '@/data/image';
+import Layout from '@/layouts/Layout.astro';
+
+
+
+
+export function getStaticPaths() {
+  return images.map((image) => ({
+    params: { id: image.id },
+    props: { image },
+  }));
+}
+
+const { image } = Astro.props;
+---
+
+<Layout>
+  <main>
+    <BlogPost image={image} client:load />
+  </main>
+</Layout>

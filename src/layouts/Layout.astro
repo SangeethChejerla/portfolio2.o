@@ -1,0 +1,21 @@
+---
+import Header from "@/components/Header.astro";
+import { ViewTransitions } from "astro:transitions";
+import BaseHead from "../components/BaseHead.astro";
+const { ...head } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="antialiased break-words">
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <BaseHead {...head} />
+        <ViewTransitions />
+    </head>
+    <body class="">
+    <Header/>
+                    <slot />
+                </div>
+            </div>
+        </main>
+</html>

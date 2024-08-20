@@ -1,0 +1,38 @@
+---
+import ModeToggle from "./ModeToggle.astro";
+import ProfileIcon from "./ProfileIcon";
+import ResponsiveNav from "./ResponsiveNav";
+import ThemeCustomizer from "./ThemeCustomizer";
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="relative z-50 flex flex-col" style="height: var(--header-height); margin-bottom: var(--header-mb);">
+    <div class="top-0 z-10 h-16 pt-6" style="position: var(--header-position);">
+        <div class="sm:px-8 top-[var(--header-top, theme(spacing.6))] w-full" style="position: var(--header-inner-position);">
+            <div class="mx-auto max-w-7xl lg:px-8">
+                <div class="relative px-4 sm:px-8 lg:px-12">
+                    <div class="mx-auto max-w-2xl lg:max-w-5xl">
+                        <div class="relative flex items-center justify-between gap-4">
+                            <!-- Profile Icon -->
+                            <div class="flex-shrink-0">
+                                <ProfileIcon client:load />
+                            </div>
+                            
+                            <!-- Navbar -->
+                            <div class="flex-grow flex justify-center">
+                                <ResponsiveNav currentPath={currentPath} client:load />
+                            </div>
+                            
+                            <!-- Mode Toggle -->
+                            <div class="flex-shrink-0 gap-6">
+                                <ThemeCustomizer client:load/>
+                                <ModeToggle class="rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

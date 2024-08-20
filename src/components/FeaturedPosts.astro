@@ -1,0 +1,31 @@
+---
+import { formatRelativeDate } from '@/lib/utils';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const featuredPosts = allPosts
+  .filter((post: { data: { isFeatured: any; }; }) => post.data.isFeatured)
+  .sort((a: { data: { publishedAt: string | number | Date; }; }, b: { data: { publishedAt: string | number | Date; }; }) => Number(new Date(b.data.publishedAt)) - Number(new Date(a.data.publishedAt)))
+  .slice(0, 5);
+---
+
+<div class="flex flex-col space-y-4 animate-slide-from-down-and-fade-4">
+  <div class="flex flex-col space-y-2">
+    <h2 class="font-semibold md:px-6">Featured Posts</h2>
+    <div class="flex flex-col space-y-8 md:space-y-1 md:px-2">
+      {featuredPosts.map((post: { slug: any; data: { title: unknown; publishedAt: string | number | Date; }; }) => (
+        <a href={`/posts/${post.slug}`} class="flex flex-row justify-between space-x-2 items-start md:items-center duration-300 md:hover:bg-hoverBackground md:px-4 md:py-3 rounded-lg cursor-pointer">
+          <span class="text-secondaryDark">{post.data.title}</span>
+          <span class="text-neutral-400 text-sm whitespace-nowrap">
+            {formatRelativeDate(new Date(post.data.publishedAt))}
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+  <a href="/posts" class="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer justify-end">
+    <span class="text-neutral-400 text-sm underline underline-offset-4 hover:text-secondary duration-200">
+      All Posts
+    </span>
+  </a>
+</div>

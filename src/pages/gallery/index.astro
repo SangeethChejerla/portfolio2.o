@@ -1,0 +1,15 @@
+---
+import { Gallery } from "@/components/Gallery";
+import { images } from "@/data/image";
+import Layout from "@/layouts/Layout.astro";
+
+
+
+---
+
+<Layout>
+  <main>
+    <h1 class="text-4xl font-bold text-center my-8">Image Gallery</h1>
+    <Gallery images={images} client:load />
+  </main>
+</Layout>

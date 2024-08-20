@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+interface ListItem {
+  title: string;
+  url?: string;
+}
+
+const books: ListItem[] = [
+  { title: "Shoe Dog: A Memoir by the Creator of Nike by Phil Knight" },
+  { title: "The Black Swan: The Impact of the Highly Improbable by Nassim Nicholas Taleb" },
+  { title: "Antifragile: Things That Gain from Disorder by Nassim Nicholas Taleb" },
+  { title: "Fooled by Randomness: The Hidden Role of Chance in Life and in the Markets by Nassim Nicholas Taleb" },
+  { title: "Thinking in Bets by Annie Duke" },
+  { title: "A Guide to the Good Life: The Ancient Art of Stoic Joy by William B. Irvine" },
+  { title: "Atomic Habits by James Clear" }
+];
+
+const Music: ListItem[] = [
+  { title: "Akame Ga Kill OST - Akame Battle Theme", url:"https://www.youtube.com/watch?v=Le8A4uoq5ss&list=LL&index=31" },
+  { title: "One More Time One More Chance",url:"https://www.youtube.com/watch?v=jcRlGlu199o&list=LL&index=77" },
+  { title: "Go! Go! Loser Ranger!" ,url:"https://www.youtube.com/watch?v=HFrx9pHfgv8"},
+  { title: "Tsurune -Main Theme",url:"https://www.youtube.com/watch?v=vfY16hrDyKg" },
+  { title: "AOT op-1",url:"https://www.youtube.com/watch?v=aFcfgHfEEsw" }
+];
+
+const tools: ListItem[] = [
+  { title: "ChatGpt",url:"https://chatgpt.com/" },
+  { title: "Claude AI",url:"https://https://claude.ai/"},
+  { title: "Meta AI",url:"https://www.meta.ai" },
+  { title: "BlackBox AI",url:"https://www.blackbox.ai" },
+  { title: "Excalidraw",url:"https://excalidraw.com/" },
+  { title: "Notion",url:"https://www.notion.so/" },
+  {title:"Tldraw",url:"https://tldraw.com/"},
+    { title: "Towards datascience",url:"https://towardsdatascience.com/" },
+  { title: "Daily Dev" ,url:"https://app.daily.dev/"},
+];
+
+const videos: ListItem[] = [
+  { title: "Tentai Kansoku" ,url:"https://www.youtube.com/watch?v=5lygiL4Y3kU"},
+  { title: "The Lamb and the Wolf - Kindred voices" ,url:"https://www.youtube.com/watch?v=r_PamAugaf0"}
+];
+
+const people: string[] = [
+  "Andrew Wilkinson", "Otter", "Jack Butcher", "Sahil Lavingia", "James Clear",
+  "Naval", "Paul Graham", "John O'Nolan", "Jon Yongfook", "Joel Gascoigne", "Peter Levels"
+];
+
+---
+<Layout title="Sangeeth Reddy - Full Stack Engineer">
+  <main class="max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8 text-center text-white">Resource</h1>
+        <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 border-b-2 border-primary-200 pb-1 text-white">Tools I Use</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {tools.map((tool) => (
+          <li class="transition-transform hover:scale-105">
+            <a href={tool.url} class="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+              {tool.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 border-b-2 border-primary-200 pb-1 text-white">Books worth re-reading</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {books.map((book) => (
+          <li class="transition-transform hover:scale-105">
+            <a href="#" class="fixed left-0 top-0 flex w-full justify-center border-b
+             border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl
+              dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto 
+               lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+              {book.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 border-b-2 border-primary-200 pb-1 text-white">Music I like to hear</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {Music.map((mus) => (
+          <li class="transition-transform hover:scale-105">
+            <a href={mus.url} class="fixed left-0 top-0 flex w-full justify-center border-b
+             border-gray-300 bg-gradient-to-b  pb-6 pt-8 backdrop-blur-2xl
+              dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto
+                lg:rounded-xl lg:border  lg:p-4 lg:dark:bg-zinc-800/30">
+              {mus.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 border-b-2 border-primary-200 pb-1 text-white">Videos worth watching</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {videos.map((video) => (
+          <li class="transition-transform hover:scale-105">
+            <a href={video.url} class="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+              {video.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 border-b-2 border-primary-200 pb-1 text-white">People with unique perspective I follow</h2>
+      <div class="flex flex-wrap gap-2">
+        {people.map((person) => (
+          <a href="#" class="px-3 py-1 text-primary-800 rounded-full text-sm font-medium underline
+           hover:bg-yellow-400 transition-colors shadow-sm">
+            {person}
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-12">
+ <article class="flex flex-col w-full items-center justify-between gap-3 p-6 relative 
+ transition-all duration-75 ease-in-out bg-primary-400 -rotate-1 hover:-rotate-0"> <span class="absolute top-3 right-3 text-5xl text-gray-700">"</span> <h5 class="text-gray-900 dark:text-gray-900 w-full font-medium text-md">
+
+<span class="underline decoration-wavy">Quote</span> </h5>
+ <h1 class="text-black dark:text-black font-medium w-full sm:text-xl md:text-2xl indent-9"> 
+   "It's not about who said it, but how it makes you feel. That's what truly matters, 
+   don't you think?" </h1>
+    <p class="text-black w-full text-end font-medium text-sm"> ME</p>   <div class="absolute bottom-3 left-3 text-xs text-gray-600">
+    <span class="animate-pulse">✨ Feel the words ✨</span>
+  </div></article> </a>
+    </section>
+  </main>
+</Layout>

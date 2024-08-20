@@ -1,0 +1,32 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+
+import '@/styles/global.css';
+---
+<Layout>
+
+		
+		<h1 class="text-7xl">Astro</h1>
+		
+	<div class="space-y-6">
+      <div class="p-6 bg-primary-100 rounded-lg">
+        <h2 class="text-2xl font-semibold mb-4 text-primary-800">Primary Background</h2>
+        <p class="text-primary-700">This box demonstrates the primary background color.</p>
+      </div>
+
+      <div class="p-6 bg-white rounded-lg border border-primary-200">
+        <h2 class="text-2xl font-semibold mb-4 text-primary-800">Primary Text</h2>
+        <p class="text-primary-700">This text is using the primary text color.</p>
+      </div>
+
+      <div class="space-y-4">
+        <h2 class="text-2xl font-semibold text-primary-800">Interactive Elements</h2>
+        <button class="px-4 py-2 bg-primary-500 text-white rounded hover:bg-primary-600 transition-colors">
+          Primary Button
+        </button>
+        <a href="#" class="text-primary-600 hover:text-primary-700 hover:underline">Primary Link</a>
+      </div>
+    </div>
+
+</Layout>

@@ -1,0 +1,85 @@
+---
+import ViewCounter from "@/components/ViewCounter";
+import { CONFIG } from "@/config";
+import Layout from "@/layouts/Layout.astro";
+import { formatRelativeDate, sortItemsByDateDesc } from "@/lib";
+import { getViewsCount, incrementViews } from "@/lib/db";
+import { type CollectionEntry, getCollection } from "astro:content";
+import { Eye } from 'lucide-react';
+
+export async function getStaticPaths() {
+	const posts = (await getCollection("blog")).sort(sortItemsByDateDesc);
+	const postCount = posts.length;
+	return posts.map((post, index) => ({
+		params: { slug: post.slug },
+		props: {
+			post,
+			prevPost: index + 1 !== postCount ? posts[index + 1] : null,
+			nextPost: index !== 0 ? posts[index - 1] : null,
+		},
+	}));
+}
+
+type Props = { post: CollectionEntry<"blog"> };
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+// Increment views and get view count
+if (Astro.request.method === 'GET') {
+  await incrementViews(post.slug);
+}
+const views = await getViewsCount();
+---
+<Layout description={CONFIG.meta.description}>
+  <main class="max-w-3xl mx-auto px-4 py-8 text-white">
+    <div class="w-full pb-20">
+      <div class="flex flex-row space-x-4 mb-6 text-sm text-secondaryDarker animate-slide-from-down-and-fade-1">
+        <a
+          href="/posts"
+          class="flex flex-row space-x-2 items-center group cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            class="text-secondaryDarker group-hover:-translate-x-1 duration-200 rotate-180"
+          >
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="M1.25 8A.75.75 0 0 1 2 7.25h10.19L9.47 4.53a.75.75 0 0 1 1.06-1.06l4 4a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H2A.75.75 0 0 1 1.25 8"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span class="text-secondaryDarker">Back to all posts</span>
+        </a>
+      </div>
+
+      <div class="flex items-center justify-between mb-4 animate-slide-from-down-and-fade-2">
+        <h1 class="title font-bold text-3xl tracking-tighter max-w-[650px]">
+          {post.data.title}
+        </h1>
+
+      </div>
+
+      <div class="flex items-center space-x-4 text-sm text-secondaryDark mb-8 animate-slide-from-down-and-fade-3">
+        <span>
+          Published: {formatRelativeDate(post.data.publishedAt)}
+        </span>
+      <div class="flex items-center space-x-3 text-white">
+    <Eye size={18} />
+    <ViewCounter slug={post.slug} allViews={views} client:load />
+  </div>
+      </div>
+
+      <article class="prose prose-invert pb-10 animate-slide-from-down-and-fade-4">
+        <Content />
+      </article>
+
+      <div class="flex w-full items-center justify-center my-6 animate-slide-from-down-and-fade-5">
+        <span class="w-8 bg-secondaryDarker h-[1px] rounded-full"></span>
+      </div>
+    </div>
+  </main>
+</Layout>

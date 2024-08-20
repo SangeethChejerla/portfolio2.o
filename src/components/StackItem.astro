@@ -1,0 +1,114 @@
+---
+import { cn } from "@/lib/utils";
+
+
+
+interface StackItem {
+  id: number;
+  icon: string;
+  title: string;
+  className: string;
+}
+
+export const stackItems: StackItem[] = [
+  {
+    id: 1,
+    icon: '/icons/nextjs-icon.svg',
+    title: 'Next.js',
+    className:
+      'mb-1 h-8 w-8 rounded-md bg-black p-[7px] text-white shadow-lg shadow-rose-900/60 ring-2 ring-rose-400/20 group-hover:shadow-xl group-hover:shadow-rose-700 group-hover:ring-rose-400/30',
+  },
+  {
+    id: 2,
+    icon: '/icons/typescriptlang-icon.svg',
+    title: 'TypeScript',
+    className:
+      'mb-1 h-8 w-8 rounded-md bg-black p-[7px] text-white shadow-lg shadow-rose-900/60 ring-2 ring-rose-400/20 group-hover:shadow-xl group-hover:shadow-rose-700 group-hover:ring-rose-400/30',
+  },
+  {
+    id: 3,
+    icon: '/icons/reactjs-icon.svg',
+    title: 'React',
+    className:
+      'mb-1 h-8 w-8 rounded-md bg-black p-[7px] text-white shadow-lg shadow-rose-900/60 ring-2 ring-rose-400/20 group-hover:shadow-xl group-hover:shadow-rose-700 group-hover:ring-rose-400/30',
+  },
+  {
+    id: 4,
+    icon: '/icons/tailwindcss-icon.svg',
+    title: 'Tailwind CSS',
+    className:
+      'mb-1 h-8 w-8 rounded-md bg-black p-[7px] text-white shadow-lg shadow-rose-900/60 ring-2 ring-rose-400/20 group-hover:shadow-xl group-hover:shadow-rose-700 group-hover:ring-rose-400/30',
+  },
+  {
+    id: 5,
+    icon: '/icons/python-icon.svg',
+    title: 'Python',
+    className:
+      'mb-1 h-8 w-8 rounded-md bg-black p-[7px] text-white shadow-lg shadow-rose-900/60 ring-2 ring-rose-400/20 group-hover:shadow-xl group-hover:shadow-rose-700 group-hover:ring-rose-400/30',
+  },
+  {
+    id: 6,
+    icon: '/icons/postgresql-icon.svg',
+    title: 'PostgreSQL',
+    className:
+      'mb-1 h-8 w-8 rounded-md bg-black p-[7px] text-white shadow-lg shadow-rose-900/60 ring-2 ring-rose-400/20 group-hover:shadow-xl group-hover:shadow-rose-700 group-hover:ring-rose-400/30',
+  },
+  {
+    id: 7,
+    icon: '/icons/mongodb-icon.svg',
+    title: 'MongoDB',
+    className:
+      'mb-1 h-8 w-8 rounded-md bg-black p-[7px] text-white shadow-lg shadow-rose-900/60 ring-2 ring-rose-400/20 group-hover:shadow-xl group-hover:shadow-rose-700 group-hover:ring-rose-400/30',
+  },
+  {
+    id: 8,
+    icon: '/icons/git-scm-icon.svg',
+    title: 'Git',
+    className:
+      'mb-1 h-8 w-8 rounded-md bg-black p-[7px] text-white shadow-lg shadow-rose-900/60 ring-2 ring-rose-400/20 group-hover:shadow-xl group-hover:shadow-rose-700 group-hover:ring-rose-400/30',
+  },
+  {
+    id: 9,
+    icon: '/icons/github-tile.svg',
+    title: 'GitHub',
+    className:
+      'mb-1 h-8 w-8 rounded-md bg-black p-[7px] text-white shadow-lg shadow-rose-900/60 ring-2 ring-rose-400/20 group-hover:shadow-xl group-hover:shadow-rose-700 group-hover:ring-rose-400/30',
+  },
+  {
+    id: 10,
+    icon: '/icons/pytorch-icon.svg',
+    title: 'PyTorch',
+    className:
+      'mb-1 h-8 w-8 rounded-md bg-black p-[7px] text-white shadow-lg shadow-rose-900/60 ring-2 ring-rose-400/20 group-hover:shadow-xl group-hover:shadow-rose-700 group-hover:ring-rose-400/30',
+  },
+  {
+    id: 11,
+    icon: '/icons/astro-icon.svg',
+    title: 'Astro JS',
+    className:
+      'mb-1 h-8 w-8 rounded-md stroke-white bg-black p-[7px] text-white shadow-lg shadow-rose-900/60 ring-2 ring-rose-400/20 group-hover:shadow-xl group-hover:shadow-rose-700 group-hover:ring-rose-400/30',
+  },
+    {
+    id: 12,
+    icon: '/icons/docker-icon.svg',
+    title: 'Docker',
+    className:
+      'mb-1 h-8 w-8 rounded-md stroke-white bg-black p-[7px] text-white shadow-lg shadow-rose-900/60 ring-2 ring-rose-400/20 group-hover:shadow-xl group-hover:shadow-rose-700 group-hover:ring-rose-400/30',
+  },
+];
+---
+    <h2 class="text-2xl font-semibold text-white mb-4">My Stack</h2>
+<div class="max-w-3xl mx-auto">
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+    {stackItems.map((item) => (
+      <div class="flex flex-col items-center">
+        <img
+          src={item.icon}
+          alt={item.title}
+          class={cn(item.className,'object-contain')}
+        />
+        <span class="text-xs mt-2 text-center">{item.title}</span>
+      </div>
+    ))}
+  </div>
+</div>

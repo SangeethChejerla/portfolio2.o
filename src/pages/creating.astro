@@ -1,0 +1,31 @@
+---
+
+import ProjectCard from '../components/ProjectCard.tsx';
+import Layout from '../layouts/Layout.astro';
+
+const projectData = {
+  title: "Amazing Project",
+  description: "This is a fantastic project that showcases the power of Astro, React, and Tailwind CSS. It features a beautiful carousel and responsive design.",
+  githubLink: "https://github.com/yourusername/amazing-project",
+  images: [
+    { src: "https://images.unsplash.com/photo-1721332149274-586f2604884d?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Project screenshot 1" },
+    { src: "https://images.unsplash.com/photo-1721332150382-d4114ee27eff?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Project screenshot 2" },
+    { src: "https://images.unsplash.com/photo-1721332155545-c7a8005a2581?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Project screenshot 3" },
+  ],
+};
+---
+
+<Layout title="Project Page">
+  <main class="">
+    <div class="container mx-auto px-4 mt-8">
+      <h1 class="text-4xl font-bold text-center mb-12 text-white">My Project</h1>
+      <ProjectCard
+        client:load
+        title={projectData.title}
+        description={projectData.description}
+        githubLink={projectData.githubLink}
+        images={projectData.images}
+      />
+    </div>
+  </main>
+</Layout>
