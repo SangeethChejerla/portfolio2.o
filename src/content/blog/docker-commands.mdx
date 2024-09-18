@@ -1,0 +1,176 @@
+---
+title: 'A logical sequence of Docker commands'
+publishedAt: '2024-08-20'
+category: 'tech'
+isFeatured: true
+tags:
+  - docker
+---
+
+## Docker Command Usage Guide
+
+### 0. basic
+
+```
+docker build .
+docker run -p port:port [image-id]
+```
+
+### 1. Building and Managing Docker Images
+
+- **Build a Docker Image**
+
+  ```sh
+  docker build -t myapp:latest .
+  ```
+
+  Builds a Docker image from the current directory with the tag `myapp:latest`.
+
+- **List Docker Images**
+
+  ```sh
+  docker images
+  ```
+
+  Lists all available Docker images on your local system.
+
+- **Remove an Image**
+
+  ```sh
+  docker rmi [image-id or repository:tag]
+  ```
+
+  Removes a specific Docker image by its ID or tag.
+
+- **Prune Unused Images**
+  ```sh
+  docker image prune -a
+  ```
+  Removes all unused Docker images to free up space.
+
+### 2. Running and Managing Containers
+
+- **Run a Container**
+
+  ```sh
+   docker run -p port:port -d --name [name] name:tag
+  ```
+
+  Runs a container from the `myapp:latest` image, mapping port `8080` on the host to port `80` in the container. The container runs in detached mode (`-d`) and is named `myapp-container`.
+
+- **List Running Containers**
+
+  ```sh
+  docker ps
+  ```
+
+  Lists all currently running Docker containers.
+
+- **List All Containers**
+
+  ```sh
+  docker ps -a
+  ```
+
+  Lists all Docker containers, including stopped ones.
+
+- **Start a Stopped Container**
+
+  ```sh
+  docker start [container-id or name]
+   (or)
+  docker start -a [image-id]
+  ```
+
+  Starts a stopped container named `myapp-container`.
+
+- **Stop a Running Container**
+
+  ```sh
+  docker stop [container-id or name]
+  ```
+
+  Stops a running container named `myapp-container`.
+
+- **Remove a Stopped Container**
+  ```sh
+  docker rm [container-id or name]
+  ```
+  Removes a stopped container named `myapp-container`.
+
+### 3. Executing Commands and Debugging
+
+- **Execute a Command Inside a Running Container**
+
+  ```sh
+  docker exec -it myapp-container /bin/bash
+  ```
+
+  Opens an interactive terminal (`-it`) inside the running container named `myapp-container`, allowing you to execute commands within it.
+
+- **View Container Logs**
+
+  ```sh
+  docker logs [container-id or name]
+  ```
+
+  Displays the logs for the container named `myapp-container`.
+
+- **Follow Container Logs**
+
+  ```sh
+  docker logs -f [container-id or name]
+  ```
+
+  Follows the logs for the container named `myapp-container` in real-time.
+
+- **Attach to a Running Container**
+  ```sh
+  docker attach [container-id or name]
+  ```
+  Attaches to the running container's console for live interaction.
+
+### 4. Image and Container Lifecycle Management
+
+- **Push an Image to a Registry**
+
+  ```sh
+  docker push myapp:latest
+  ```
+
+  Pushes the `myapp:latest` image to a Docker registry.
+
+- **Pull an Image from a Registry**
+  ```sh
+  docker pull myapp:latest
+  ```
+  Pulls the `myapp:latest` image from a Docker registry.
+
+### 5. Advanced Usage
+
+- **Run a Container in Interactive Mode**
+
+  ```sh
+  docker exec -it [container-id or name] [command]
+  ```
+
+  Runs a container from the `myapp:latest` image in interactive mode with a terminal session.
+
+- **Start a Container in Interactive Mode**
+
+  ```sh
+  docker start -a -i myapp-container
+  ```
+
+  Starts a container named `myapp-container` and attaches to it in interactive mode.
+
+- **Remove Unused Containers and Images**
+  ```sh
+  docker system prune -a
+  ```
+  Removes all stopped containers, unused networks, and dangling images, freeing up space.
+- ** Inspect a Container**
+
+```
+docker inspect [container-id or name]
+```

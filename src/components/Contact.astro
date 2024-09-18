@@ -3,15 +3,14 @@ const contactItems = [
   { label: 'X', value: '@sangeeth_rch', link: 'https://x.com/sangeeth_rch' },
   { label: 'LinkedIn', value: 'sangeeth-reddy-chejerla', link: 'https://www.linkedin.com/in/sangeeth-reddy-chejerla-323587254/' },
   { label: 'Email', value: 'sangeethreddychejerla@gmail', link: 'mailto:sangeethreddychejerla@gmail.com' },
-  {label:'Discord',value:'discord.gg/owolawi',link:'https://discord.gg/owolawi'}
 ];
 ---
   <div class="font-sans text-gray-300 w-[400px]">
-    <h2 class="mb-8 text-2xl font-normal text-white">Contact</h2>
+    <h2 class="text-3xl font-bold mb-6">Contact</h2>
     <div class="space-y-4">
       {contactItems.map(({ label, value, link }) => (
         <div class="flex items-center">
-          <span class="text-gray-500 w-24 mr-16">{label}</span>
+          <span class="text-gray-500 w-24 mr-16 hover:text-white">{label}</span>
           <div class="text-right">
             <a href={link} class="text-gray-300 hover:text-white">
               {value}

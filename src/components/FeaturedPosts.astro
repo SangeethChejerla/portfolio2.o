@@ -11,7 +11,7 @@ const featuredPosts = allPosts
 
 <div class="flex flex-col space-y-4 animate-slide-from-down-and-fade-4">
   <div class="flex flex-col space-y-2">
-    <h2 class="font-semibold md:px-6">Featured Posts</h2>
+    <h2 class="text-3xl font-bold mb-6">Featured Posts</h2>
     <div class="flex flex-col space-y-8 md:space-y-1 md:px-2">
       {featuredPosts.map((post: { slug: any; data: { title: unknown; publishedAt: string | number | Date; }; }) => (
         <a href={`/posts/${post.slug}`} class="flex flex-row justify-between space-x-2 items-start md:items-center duration-300 md:hover:bg-hoverBackground md:px-4 md:py-3 rounded-lg cursor-pointer">
