@@ -2,29 +2,34 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 import { slugify } from './utils';
 
 export const getPosts = async (max?: number) => {
-  return (await getCollection('blog'))
-    .filter((post: { data: { draft: any } }) => !post.data.draft)
+  const posts = await getCollection('blog');
+
+  return posts
+    .filter((post: CollectionEntry<'blog'>) => !post.data.draft) // Using CollectionEntry type
     .sort(
-      (
-        a: { data: { publishedAt: number } },
-        b: { data: { publishedAt: number } },
-      ) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+      (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
+        b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(), // Ensure publishedAt is a Date
     )
     .slice(0, max);
 };
 
 export const getAllCategories = async () => {
   const posts = await getCollection('blog');
+
   const categories = new Set(
-    posts.map((post: { data: { category: any } }) => post.data.category),
+    posts
+      .map((post: CollectionEntry<'blog'>) => post.data.category)
+      .filter(Boolean), // Added filter to avoid undefined
   );
+
   return Array.from(categories);
 };
 
 export function getAllTags(posts: CollectionEntry<'blog'>[]) {
   const tags = [
-    ...new Set(posts.flatMap((post) => post.data.tags || []).filter(Boolean)),
+    ...new Set(posts.flatMap((post) => post.data.tags || []).filter(Boolean)), // Ensure we filter out undefined values
   ];
+
   return tags.map((tag) => ({
     name: tag,
     slug: slugify(tag),
