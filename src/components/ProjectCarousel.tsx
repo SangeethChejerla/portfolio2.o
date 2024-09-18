@@ -35,7 +35,13 @@ export default function ProjectCarousel({ images }: ProjectCarouselProps) {
         startIndex: currentIndex,
       }}
       className="w-full max-w-xl"
-      onSelect={(index) => setCurrentIndex(index)}
+      onSelect={(event: React.SyntheticEvent<HTMLDivElement>) => {
+        const index = parseInt(
+          (event.target as HTMLElement).getAttribute('data-index') || '0',
+          10,
+        );
+        setCurrentIndex(index);
+      }}
     >
       <CarouselContent>
         {images.map((image, index) => (
