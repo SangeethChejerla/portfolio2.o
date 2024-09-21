@@ -1,0 +1,1 @@
+import{j as s}from"./jsx-runtime.B1YlcU0w.js";import"./index.BiFHKRHA.js";function c({slug:t,allViews:e}){const n=e.find(r=>r.slug===t),o=new Number(n?.count||0);return s.jsx("p",{className:"text-white",children:`${o.toLocaleString()} views`})}export{c as default};
